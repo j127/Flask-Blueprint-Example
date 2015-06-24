@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1>Some Trees</h1>
+<p>This is the homepage.</p>
+<ul>
+    {% for tree in data.trees %}
+    <li><a href="{{ tree }}/">{{ tree}}</a>
+        <ul>
+            {% for section in data.sections %}
+            <li><a href="{{ tree }}/{{ section }}/">{{ section }}</a> </li>
+            {% endfor %}
+            <li>Ring year data: {% for year in data.years %}
+                <a href="{{ tree }}/rings/{{ year }}/">{{ year }}</a>
+            {% endfor %}</li>
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
